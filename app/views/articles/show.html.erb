@@ -1,0 +1,26 @@
+<style>
+html {
+	background-color: #C0C0C0;
+}
+body {
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#000;
+	color:#fff;
+}
+p { padding:30px; }
+
+ul li { list-style-type: none; }
+
+a { color:orange; }
+a:visited, a:hover { color:yellow; }
+
+</style>
+<html>
+<body>
+<center><h1><%= @article.title %></h1></center>
+<p><%= @article.body %></p>
+<%= link_to "<< Back to Articles List", articles_path %>
+</body>
+</html>

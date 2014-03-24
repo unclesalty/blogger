@@ -1,0 +1,41 @@
+<style>
+html {
+	background-color: #C0C0C0;
+}
+body {
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#000;
+	color:#fff;
+}
+
+ul li { list-style-type: none; }
+
+a { color:orange; }
+a:visited, a:hover { color:yellow; }
+
+</style>
+<html>
+<body>
+<center><h1>Create a New Article</h1><center>
+	<%= form_for(@article) do |f| %>
+  <ul>
+  <% @article.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</body>
+</html>
