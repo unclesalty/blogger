@@ -8,19 +8,43 @@ body {
 	margin-right:auto;
 	background-color:#000;
 	color:#fff;
+	padding:15px;
 }
-p { padding:30px; }
+
+#body-wrapper {
+	background-color:white;
+	border:solid;
+	border-color:#79CDCD;
+	border-radius: 30px;
+	width:90%;
+}
+
+#links {
+background-color:white;
+	border:solid;
+	border-color:#79CDCD;
+	border-radius: 30px;
+	width:30%;
+
+}
+p { 
+	padding:30px; 
+	color:black;
+}
 
 ul li { list-style-type: none; }
 
-a { color:orange; }
-a:visited, a:hover { color:yellow; }
+a { color:blue; }
+a:visited, a:hover { color:green; }
+
 
 </style>
 <html>
 <body>
 <center><h1><%= @article.title %></h1></center>
-<p><%= @article.body %></p>
-<%= link_to "<< Back to Articles List", articles_path %>
+<center><div id="body-wrapper"><p><%= @article.body %></p></div><br><br>
+<div id="links"><%= link_to "<< Back to Articles List", articles_path %><br>
+<%= link_to "delete", article_path(@article), method: :delete  %><br>
+<%= link_to "edit", edit_article_path(@article) %></div></center>
 </body>
 </html>
