@@ -1,57 +1,24 @@
-<style>
-html {
-	background-color: #fff;
-}
-body {
-	width:800px;
-	margin-left:auto;
-	margin-right:auto;
-	background-color:#9597b8;
-	color:#000;
-	padding:15px;
-	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
 
-#body-wrapper {
-	background-color:white;
-	border:solid;
-	border-color:#79CDCD;
-	border-radius: 30px;
-	width:90%;
-	-webkit-box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,.7);
--moz-box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,.7);
-box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,.7);
-}
-
-#links {
-background-color:white;
-	border:solid;
-	border-color:#79CDCD;
-	border-radius: 30px;
-	width:30%;
-	padding:10px;	
-	-webkit-box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,.7);
--moz-box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,.7);
-box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,.7);
-}
-p { 
-	padding:30px; 
-	color:black;
-}
-
-ul li { list-style-type: none;  }
-
-a { color:blue; }
-a:visited, a:hover { color:green; }
-
-
-</style>
 <html>
 <body>
+
+	
 <center><h1><%= @article.title %></h1></center>
-<center><div id="body-wrapper"><p><%= @article.body %></p></div><br><br>
+<center>
+	<div id="body-wrapper">
+		<div id="body-img">
+			<%if @article.image.present? %><%= image_tag @article.image.url(:medium) %><% end %>
+		</div>
+		<div id="body-text">
+			<%= @article.body %>
+		</div>
+	</div><br><br>
+	<div id="comment_wrapper"><h3>Comments (<%= @article.comments.size %>)</h3>
+<%= render partial: 'articles/comment', collection: @article.comments %>
+</div></br>
+<div id="comment_box">
+	<%= render partial: 'comments/form' %>
+</div>
 <div id="links"><%= link_to "<< Back to Articles List", articles_path %><br>
 <%= link_to "delete", article_path(@article), method: :delete  %><br>
 <%= link_to "edit", edit_article_path(@article) %></div></center>
